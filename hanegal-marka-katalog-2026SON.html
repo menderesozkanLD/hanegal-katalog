@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hanegal Katalog 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;font-family:'Outfit',sans-serif;height:100vh;overflow:hidden;color:#eee}
+.topbar{position:fixed;top:0;left:0;right:0;height:50px;background:rgba(5,5,5,0.95);border-bottom:1px solid #1a1a1a;display:flex;align-items:center;justify-content:space-between;padding:0 24px;z-index:100}
+.brand-logo{display:flex;align-items:center}
+.page-info{font-size:11px;color:#555;letter-spacing:2px}
+.stage{width:100vw;min-height:100vh;display:flex;align-items:center;justify-content:center;padding-top:50px;padding-bottom:70px}
+.book{display:flex;width:900px;height:620px;box-shadow:0 40px 100px rgba(0,0,0,0.9)}
+@media(max-width:700px){
+  body{overflow:hidden}
+  .stage{padding:0;align-items:stretch;height:100vh}
+  .book{display:none}
+  .nav{display:none}
+  /* MOBİL LAYOUT */
+  .mobile-view{display:flex !important}
+}
+.mobile-view{
+  display:none;
+  position:fixed;
+  inset:0;
+  flex-direction:column;
+  background:#0a0a0a;
+  overflow:hidden;
+  touch-action:pan-y;
+}
+.mob-header{
+  height:50px;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 16px;
+  background:rgba(5,5,5,0.95);
+  border-bottom:1px solid #1a1a1a;
+}
+.mob-brand-name{font-family:'Bebas Neue';font-size:18px;letter-spacing:3px;color:#E8C84A}
+.mob-counter{font-size:10px;color:#555;letter-spacing:1px}
+.mob-cover{
+  flex-shrink:0;
+  height:130px;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  padding:0 20px;
+  gap:16px;
+  transition:background .3s;
+}
+.mob-cover-text{z-index:1}
+.mob-cover-title{font-family:'Bebas Neue';font-size:42px;letter-spacing:4px;color:#fff;line-height:1;text-shadow:0 2px 12px rgba(0,0,0,0.5)}
+.mob-cover-sub{font-size:9px;letter-spacing:2px;opacity:0.5;color:#fff;margin-top:2px}
+.mob-cover-count{font-size:10px;color:#fff;opacity:0.7;margin-top:6px;letter-spacing:1px}
+.mob-cover-deco{position:absolute;right:-30px;bottom:-30px;width:160px;height:160px;border-radius:50%;opacity:0.08;border:25px solid #fff}
+.mob-logo{height:38px;width:auto;margin-left:auto;z-index:1;filter:brightness(0) invert(1);opacity:0.7;flex-shrink:0}
+.mob-grid-wrap{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:8px}
+.mob-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.mob-card{
+  aspect-ratio:1/1;
+  position:relative;
+  background:#fff;
+  border-radius:8px;
+  overflow:hidden;
+  cursor:pointer;
+  border:2px dashed #ddd;
+  transition:border-color .15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.mob-card:active{transform:scale(0.97)}
+.mob-card img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;visibility:hidden}
+.mob-card .mob-lbl{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.55);padding:4px 6px;display:flex;align-items:baseline;justify-content:space-between}
+.mob-card .mob-code{font-family:'Bebas Neue';font-size:13px;color:#fff;letter-spacing:1px}
+.mob-card .mob-inch{font-size:8px;color:#ccc;letter-spacing:1px}
+.mob-card .mob-add-hint{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:10px;color:#bbb;letter-spacing:1px;font-family:'Bebas Neue'}
+.mob-add-card{aspect-ratio:1/1;background:#0d0d0d;border:2px dashed #333;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:12px;letter-spacing:2px;color:#444;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.mob-add-card:active{border-color:#E8C84A;color:#E8C84A}
+.mob-nav{
+  flex-shrink:0;
+  height:56px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 16px;
+  background:rgba(5,5,5,0.95);
+  border-top:1px solid #1a1a1a;
+  gap:8px;
+}
+.mob-nav-btn{
+  width:40px;height:40px;border-radius:50%;
+  border:1px solid #2a2a2a;background:rgba(20,20,20,0.9);
+  color:#bbb;font-size:18px;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;flex-shrink:0;-webkit-tap-highlight-color:transparent;
+}
+.mob-nav-btn:active{background:#E8C84A;color:#111}
+.mob-nav-btn:disabled{opacity:0.2}
+.mob-dots-wrap{flex:1;overflow-x:auto;display:flex;align-items:center;gap:5px;padding:0 4px;scrollbar-width:none}
+.mob-dots-wrap::-webkit-scrollbar{display:none}
+.mob-dot{width:7px;height:7px;border-radius:50%;background:#222;border:1px solid #333;flex-shrink:0;cursor:pointer;transition:all .2s}
+.mob-dot.active{background:#E8C84A;border-color:#E8C84A;transform:scale(1.3)}
+.mob-swipe-hint{position:absolute;bottom:60px;left:50%;transform:translateX(-50%);font-size:9px;color:#333;letter-spacing:2px;pointer-events:none;opacity:0;animation:fadeHint 3s ease forwards}
+@keyframes fadeHint{0%{opacity:0}20%{opacity:1}80%{opacity:1}100%{opacity:0}}
+
+/* SOL SAYFA - KAPAK */
+.brand-cover{width:360px;height:620px;flex-shrink:0;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 32px;gap:16px}
+.cover-circle{position:absolute;border-radius:50%;opacity:0.06}
+.cover-label{font-size:10px;letter-spacing:4px;opacity:0.6;z-index:1}
+.cover-brand{font-family:'Bebas Neue';letter-spacing:6px;line-height:1;text-align:center;z-index:1;text-shadow:0 4px 24px rgba(0,0,0,0.5)}
+.cover-sub{font-size:11px;letter-spacing:2px;opacity:0.5;z-index:1;text-align:center}
+.cover-count{font-size:11px;padding:6px 16px;border:1px solid currentColor;border-radius:2px;opacity:0.7;letter-spacing:2px;z-index:1}
+.cover-accent{position:absolute;bottom:0;left:0;right:0;height:4px}
+.gutter{width:4px;height:620px;flex-shrink:0;background:linear-gradient(to right,#000,#1a1a1a,#000)}
+
+/* SAG SAYFA - URUNLER */
+.prod-page{width:536px;height:620px;flex-shrink:0;background:#111;display:flex;flex-direction:column;overflow:hidden}
+.prod-header{padding:12px 14px 8px;border-bottom:1px solid #1a1a1a;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.prod-header h3{font-family:'Bebas Neue';font-size:17px;letter-spacing:3px;color:#ddd}
+.prod-badge{font-size:9px;letter-spacing:2px;padding:3px 10px;border-radius:2px;font-weight:700}
+
+/* URUN GRID */
+.prod-grid{flex:1;overflow-y:auto;padding:8px;display:grid;gap:6px;align-content:start}
+.prod-grid::-webkit-scrollbar{width:3px}
+.prod-grid::-webkit-scrollbar-thumb{background:#333}
+
+/* URUN KART - aspect-ratio:1 grid item uzerinde calısır! */
+.prod-card{
+  position:relative;
+  background:#fff;
+  border-radius:5px;
+  overflow:hidden;
+  cursor:pointer;
+  border:2px dashed #ddd;
+  transition:border-color .2s,transform .2s;
+}
+.prod-card:hover{border-color:#E8C84A;transform:scale(1.04);z-index:5}
+.prod-card:hover .upload-hint{opacity:1}
+.prod-card img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;visibility:hidden}
+.upload-hint{position:absolute;inset:0;background:rgba(232,200,74,0.2);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;font-size:10px;color:#996600;letter-spacing:1px;font-weight:700}
+.prod-card .lbl{position:absolute;bottom:5px;right:5px;background:rgba(0,0,0,0.55);padding:2px 6px;border-radius:3px;text-align:right}
+.prod-card .lbl .code{font-family:'Bebas Neue';font-size:11px;letter-spacing:1px;color:#fff;display:block;line-height:1.2;cursor:text}
+.prod-card .lbl .inch{font-size:7px;color:#ddd;letter-spacing:1px;line-height:1.2;cursor:text}
+
+.prod-footer{padding:5px 14px;border-top:1px solid #141414;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.prod-footer .total{font-size:9px;color:#444;letter-spacing:2px}
+.prod-footer .logo{font-family:'Bebas Neue';font-size:11px;letter-spacing:3px;color:#1a1a1a}
+
+/* NAV */
+.nav{position:fixed;bottom:14px;display:flex;gap:8px;align-items:center;z-index:100}
+.nav-btn{width:40px;height:40px;border-radius:50%;border:1px solid #2a2a2a;background:rgba(0,0,0,0.9);cursor:pointer;color:#bbb;display:flex;align-items:center;justify-content:center;transition:all .2s;font-size:15px}
+.nav-btn:hover:not(:disabled){border-color:#E8C84A;color:#E8C84A}
+.nav-btn:disabled{opacity:0.2;cursor:not-allowed}
+.nav-dots{display:flex;gap:4px;align-items:center;flex-wrap:wrap;max-width:220px;justify-content:center}
+.dot{width:7px;height:7px;border-radius:50%;background:#222;cursor:pointer;transition:all .2s;border:1px solid #333}
+.dot.active{background:#E8C84A;border-color:#E8C84A;transform:scale(1.3)}
+.progress-bar{position:fixed;bottom:0;left:0;height:2px;background:#E8C84A;transition:width .4s;z-index:200}
+.drag-over{border-color:#E8C84A !important;background:#1a1500 !important}
+.prod-card.dragging{opacity:0.4;transform:scale(0.95)}
+.add-card{background:#0d0d0d;border:2px dashed #444;border-radius:5px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .2s,background .2s;color:#555;font-family:'Bebas Neue';font-size:13px;letter-spacing:2px}
+.add-card:hover{border-color:#E8C84A;background:#111;color:#E8C84A}
+.add-page-btn{width:32px;height:32px;border-radius:50%;border:1px dashed #444;background:transparent;cursor:pointer;color:#555;font-size:18px;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.add-page-btn:hover{border-color:#E8C84A;color:#E8C84A}
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:500;display:none;align-items:center;justify-content:center}
+.img-edit-bg{position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:600;display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+.img-edit-bg.open{display:flex}
+.img-edit-frame{position:relative;width:300px;height:300px;overflow:hidden;border:2px solid #E8C84A;border-radius:6px;cursor:grab;background:#111;touch-action:none}
+.img-edit-frame:active{cursor:grabbing}
+.img-edit-frame img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;transform-origin:center;pointer-events:none;user-select:none}
+.img-edit-controls{display:flex;flex-direction:column;align-items:center;gap:10px;width:300px}
+.img-edit-label{font-size:10px;color:#888;letter-spacing:2px;text-align:center}
+.zoom-row{display:flex;align-items:center;gap:10px;width:100%}
+.zoom-btn{width:32px;height:32px;border-radius:50%;border:1px solid #333;background:#1a1a1a;color:#E8C84A;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.zoom-btn:active{background:#E8C84A;color:#111}
+input[type=range].zoom-slider{flex:1;accent-color:#E8C84A;height:4px}
+.img-edit-btns{display:flex;gap:8px}
+.img-edit-btns button{padding:8px 20px;border-radius:4px;border:none;cursor:pointer;font-family:'Bebas Neue';font-size:14px;letter-spacing:2px}
+.edit-save{background:#E8C84A;color:#111}
+.edit-cancel{background:#333;color:#aaa}
+.edit-reset{background:#1a1a1a;color:#666;border:1px solid #333 !important}
+.edit-trigger{position:absolute;top:4px;left:4px;width:22px;height:22px;border-radius:50%;background:rgba(232,200,74,0.9);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:11px;z-index:3;opacity:0;transition:opacity .2s}
+.prod-card:hover .edit-trigger{opacity:1}
+.mob-card .edit-trigger{opacity:0.7}
+/* Düzenleme kapalı modu */
+body.view-mode .edit-trigger{display:none !important}
+body.view-mode .add-card{display:none !important}
+body.view-mode .mob-add-card{display:none !important}
+body.view-mode .add-page-btn{display:none !important}
+body.view-mode .prod-card{cursor:default !important}
+body.view-mode .mob-card{cursor:default !important}
+body.view-mode .prod-card .lbl .code{cursor:default !important}
+body.view-mode .prod-card .lbl .inch{cursor:default !important}
+body.view-mode .prod-card:hover{transform:none !important;border-color:#ddd !important}
+body.view-mode .mob-card:active{transform:none !important}
+.edit-mode-badge{position:fixed;bottom:70px;right:16px;background:#E8C84A;color:#111;font-family:'Bebas Neue';font-size:11px;letter-spacing:2px;padding:4px 10px;border-radius:3px;z-index:300;display:none}
+body.edit-mode .edit-mode-badge{display:block}
+.modal-bg.open{display:flex}
+.modal{background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:24px;min-width:280px;display:flex;flex-direction:column;gap:12px}
+.modal h4{font-family:'Bebas Neue';font-size:18px;letter-spacing:3px;color:#E8C84A}
+.modal input{background:#0d0d0d;border:1px solid #333;border-radius:4px;padding:8px 10px;color:#eee;font-family:'Outfit',sans-serif;font-size:13px;outline:none;width:100%}
+.modal input:focus{border-color:#E8C84A}
+.modal-btns{display:flex;gap:8px;justify-content:flex-end}
+.modal-btns button{padding:7px 18px;border-radius:4px;border:none;cursor:pointer;font-family:'Bebas Neue';font-size:14px;letter-spacing:2px}
+.modal-ok{background:#E8C84A;color:#111}
+.modal-cancel{background:#333;color:#aaa}
+.overlay{position:absolute;inset:0;background:rgba(0,0,0,0);pointer-events:none;transition:background .15s;z-index:30}
+.overlay.on{background:rgba(0,0,0,0.3)}
+</style>
+</head>
+<body>
+<div class="edit-mode-badge">✎ DÜZENLEME MODU</div>
+<div class="img-edit-bg" id="imgEditBg">
+  <div class="img-edit-label">GÖRSELİ KONUMLANDIR VE YAKLAŞTIR</div>
+  <div class="img-edit-frame" id="imgEditFrame">
+    <img id="imgEditImg" src="" alt="">
+  </div>
+  <div class="img-edit-controls">
+    <div class="zoom-row">
+      <button class="zoom-btn" onclick="imgEditZoom(-0.1)">&#8722;</button>
+      <input type="range" class="zoom-slider" id="zoomSlider" min="0.5" max="3" step="0.05" value="1">
+      <button class="zoom-btn" onclick="imgEditZoom(0.1)">&#43;</button>
+    </div>
+    <div class="img-edit-label" id="imgEditHint">Sürükle: konumlandır • Kaydır: zoom</div>
+  </div>
+  <div class="img-edit-btns">
+    <button class="edit-btns edit-cancel" onclick="closeImgEdit()">İPTAL</button>
+    <button class="edit-btns edit-reset" onclick="resetImgEdit()">SIFIRLA</button>
+    <button class="edit-btns edit-save" onclick="saveImgEdit()">KAYDET</button>
+  </div>
+</div>
+<div class="modal-bg" id="modalBg">
+  <div class="modal">
+    <h4 id="modalTitle">YENİ ÜRÜN</h4>
+    <input id="modalInput1" placeholder="Ürün kodu" />
+    <input id="modalInput2" placeholder="İnç (örn: 14)" />
+    <div class="modal-btns">
+      <button class="modal-cancel" onclick="closeModal()">İPTAL</button>
+      <button class="modal-ok" id="modalOkBtn">EKLE</button>
+    </div>
+  </div>
+</div>
+<!-- MOBİL GÖRÜNÜM -->
+<div class="mobile-view" id="mobileView">
+  <div class="mob-header">
+    <img src="data:image/png;base64,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" id="mobLogoTop" style="height:34px;width:auto" alt="Hanegal">
+    <span class="mob-counter" id="mobCounter"></span>
+  </div>
+  <div class="mob-cover" id="mobCover">
+    <div class="mob-cover-text">
+      <div class="mob-cover-title" id="mobCoverTitle"></div>
+      <div class="mob-cover-sub" id="mobCoverSub"></div>
+      <div class="mob-cover-count" id="mobCoverCount"></div>
+    </div>
+    <div class="mob-cover-deco" id="mobCoverDeco"></div>
+  </div>
+  <div class="mob-grid-wrap" id="mobGridWrap">
+    <div class="mob-grid" id="mobGrid"></div>
+  </div>
+  <div class="mob-nav">
+    <button class="mob-nav-btn" id="mobPrev" onclick="mobGo(-1)">&#8592;</button>
+    <div class="mob-dots-wrap" id="mobDots"></div>
+    <button class="mob-nav-btn" id="mobNext" onclick="mobGo(1)">&#8594;</button>
+  </div>
+</div>
+<input type="file" id="imgPicker" accept="image/*" style="display:none">
+<div class="topbar">
+  <div class="brand-logo"><img src="data:image/png;base64,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" style="height:42px;width:auto;display:block" alt="Hanegal"></div>
+  <div class="page-info" id="info">MARKA KATALOĞU 2026</div>
+</div>
+<div class="stage">
+  <div class="book">
+    <div class="brand-cover" id="brandCover"></div>
+    <div class="gutter"></div>
+    <div class="prod-page">
+      <div class="prod-header"><h3 id="prodTitle"></h3><span class="prod-badge" id="prodBadge"></span></div>
+      <div class="prod-grid" id="prodGrid"></div>
+      <div class="prod-footer"><span class="total" id="prodTotal"></span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAAgCAYAAACLmoEDAAAFjUlEQVR4nO2WW2wUVRiA/3OZmd3Zbbvd7i4tZaHQaitsIYTWyK3LRSgUMGrdiNfEmPCgiS9EE404QXlAoz54IdFoQqJo2OoLRtMCWuIlohKFUKq2K9BuS1nKXtqdnd2ZnZ3fh7amkBoRJdFkv+QkM3/OOf/3/3NyMgBFihQpUuTfAhEJIpJrXwBAEYAjAJl6VgDo38hJJscV73hl7ArCAAwB+N/Ice1MFjI16PTY1BxlotC/7NL0OQMvvj57cM+e6unxGbsUhhADABhpuWMtLly5b2h9+9LouvbFuGjVG9HV29Z1KwrHt04IwBkQACSMIiEECSUWcP5HDMNhERHJbgCLMIaIKPQoYVFBpNjdzRGRoKKIgEiATex1oWl9+/DswKtEVR+zuKNtQihMAf6kWgSghFHrQkX9aZ+ZDwwc7nLZN7d1VBWsDSMtzU3Qf75dyGSb7Lpembxp/sv0XPReqHAPsnh8LgNwZZc1PWM/8cNeS5J0rufKdberi46pywRKHTpjqs8w/bFK90uktDTiiY48dlnTfLxQ8BibWh7mn3R3IQUp/vnH3kAgYEw64oydRVAoAbCioUcWyxXlcqzad1R6flezUOm9echfdTSx55lf83bHt6YsRyCnN7Ks7pc1rY1QuHvWmNpmMJISek4/DhltSWHZkuecam4x6PnNvnRmnW6T9iPCt0zN3My8rm6tkFdH51a9ixaWoa7PoSOJBR6z4KUe9wuBQMBACPIp0ZmPQaiXAACQ6IXVtMyRtiTxOAwN7ZRKS3XSUHegou3B91h6fC+o6pZxp/xpIZWa4yQUsKQklhQ4gN9/hCcS68wSZ4REBjZmZPtxKHF2G5Zlwfya82xsfPuIJBzVb7mNVPZETmB8/EG7rgcst/s16+e+NXlGIR+oPzghs8aarna1LCEdHRYiMqHv7M7suajX33t8lzB0yZONnLWzSwkNc9kWWlOzV1TVarqo/kM5nrwnLoqnyMVYr07wV5LJGaVI3NB4yxNMFk6Nb1v7qHU5Hs0CAKbTDS7LqiP1N70jf7D/YFZgXZSQk7ZCATC4/JCcVrcnBHZozsH90TAAI7D7z2URQhQAcLh5Y5uPsPmm0/nmYMvmZh/SJsvjDpO+356UXK5B6I88UBBFRkcTrRKlHvPWpc+SRLKNlJdfRi1zt8Y5gURyg/fccJj/cnYRNwsLTZtE8WJsW4qRQUvTGj26uSy7sOEIjQ49nZJtY9bpX9rLgXmkylnD5+/aURWCEFx9g5ArZYEQABxYsam2KqtXf7+06Sdfz/dlNQapjTT6e+w/Dvg8llGd0nNCXrRpzkLemSwvHYqv3Nrn7/pouWVZzHI480zXkRmGizjsw7NPfXlicNWWZipLC8tO9u5XZds+c97st8uG402jFIgEKBKHw7CAyDiWSDtK3YLmq/zM33lgaMpnRtkbQbpp/e18LN2i6UaJrWBuLDQuCZV2Hui9nr1mlFUUha45dow+pWmbyhyOfK3X2zOay9VoqnpxQcyKCV4X/zkXr80Ss8EjCF+kOBfLGJMNxHklkjQwFksZeVm4r0wSDlbb7RX3XzIuHqZZ75HgisjXx47ldtbV0TP9/bU6Y61omn21lH51AaDaLkn57aOjZ8/09pq7AaxrkgUAoigK6ezsbOWcz3U6nVWEEGYYhomIPlEU389kMvMcDsfcfD7PBUGQdF2ngiB4bDbbd8lksp+L4laRczVnmozZhKyVt5wy52NGLuewyXJMS6W+Sev643a7PSFJUpJSOgsRx10u1ysdHR1ZmHa/XjPBYJAHg0EOABAKhVhra2sVABCv1+usq6uTFEWhMxRNpr7Qjh07hIfuvLNiMjMJhUJscs3EREJg2g/LPzqWN/xM32iupwv/+6KLFClSpMh/jN8B7Vt0GzXTi5YAAAAASUVORK5CYII=" style="height:38px;width:auto;opacity:0.8" alt="Hanegal"></div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+  </div>
+</div>
+<div class="nav">
+  <button class="nav-btn" id="prevBtn" onclick="go(-1)" disabled>&#8592;</button>
+  <div class="nav-dots" id="dots"></div>
+  <button class="nav-btn" id="nextBtn" onclick="go(1)">&#8594;</button>
+</div>
+<div class="progress-bar" id="pb"></div>
+<script>
+
+// Modal sistemi
+function openModal(title, placeholder1, placeholder2, onOk) {
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalInput1').value = '';
+  document.getElementById('modalInput1').placeholder = placeholder1;
+  document.getElementById('modalInput2').value = '';
+  document.getElementById('modalInput2').placeholder = placeholder2;
+  document.getElementById('modalBg').classList.add('open');
+  document.getElementById('modalInput1').focus();
+  document.getElementById('modalOkBtn').onclick = function() {
+    const v1 = document.getElementById('modalInput1').value;
+    const v2 = document.getElementById('modalInput2').value;
+    closeModal();
+    onOk(v1, v2);
+  };
+  document.getElementById('modalInput2').onkeydown = function(e) {
+    if(e.key === 'Enter') document.getElementById('modalOkBtn').click();
+  };
+  document.getElementById('modalInput1').onkeydown = function(e) {
+    if(e.key === 'Enter') document.getElementById('modalInput2').focus();
+  };
+}
+function closeModal() {
+  document.getElementById('modalBg').classList.remove('open');
+}
+document.getElementById('modalBg').addEventListener('click', function(e) {
+  if(e.target === this) closeModal();
+});
+
+const BRANDS = [
+  {name:'UNIVERSAL',sub:'Jant Kapa\u011f\u0131 Grubu',color:'#3A3A3A',accent:'#777',textColor:'#CCC',
+   products:[{code:'2712',inch:12},{code:'3712',inch:13},{code:'4712',inch:14},{code:'5712',inch:15},{code:'5409',inch:15},{code:'4409',inch:14},{code:'6800',inch:16},{code:'6801',inch:16},{code:'3111',inch:13},{code:'4111',inch:14},{code:'5111',inch:15},{code:'6901',inch:16},{code:'5510',inch:15},{code:'6510',inch:16},{code:'5610',inch:15},{code:'6610',inch:16},{code:'4900',inch:14},{code:'5100',inch:15},{code:'5300',inch:15},{code:'5505',inch:15},{code:'5714',inch:15},{code:'3900',inch:13},{code:'4001',inch:14},{code:'4101',inch:14},{code:'4406',inch:14},{code:'4707',inch:14},{code:'4452',inch:14},{code:'4702',inch:14},{code:'5511',inch:15},{code:'3052',inch:13},{code:'4404',inch:14},{code:'5504',inch:15},{code:'2701',inch:12},{code:'5509',inch:15},{code:'3001',inch:13},{code:'3010',inch:13}]},
+  {name:'HYUNDA\u0130',sub:'Jant Kapa\u011f\u0131 Grubu',color:'#002C5F',accent:'#1F6EBE',textColor:'#7EB4E0',
+   products:[{code:'4700',inch:14},{code:'4701',inch:14},{code:'5904',inch:15},{code:'2710',inch:12},{code:'3710',inch:13},{code:'4710',inch:14},{code:'5710',inch:15},{code:'2700',inch:12},{code:'3400',inch:13},{code:'3450',inch:13},{code:'4450',inch:14},{code:'2310',inch:12},{code:'3310',inch:13},{code:'4310',inch:14},{code:'5310',inch:15}]},
+  {name:'RENAULT',sub:'Jant Kapa\u011f\u0131 Grubu',color:'#EFDF00',accent:'#F5E633',textColor:'#1a1a00',
+   products:[{code:'3050',inch:13},{code:'3100',inch:13},{code:'3150',inch:13},{code:'4401',inch:14},{code:'4402',inch:14},{code:'4405',inch:14},{code:'5502',inch:15},{code:'5503',inch:15},{code:'1111',inch:13},{code:'5506',inch:15},{code:'5512',inch:15},{code:'5507',inch:15},{code:'6200',inch:16},{code:'3900',inch:13},{code:'6750',inch:16},{code:'4400',inch:14},{code:'3040',inch:13}]},
+  {name:'PEUGEOT',sub:'Jant Kapa\u011f\u0131 Grubu',color:'#004093',accent:'#1264C8',textColor:'#7AADEE',
+   products:[{code:'4800',inch:14},{code:'5801',inch:15},{code:'6660',inch:16},{code:'6660-B',inch:16},{code:'6620',inch:16},{code:'6615',inch:16},{code:'6615-B',inch:16}]},
+  {name:'TOYOTA',sub:'Jant Kapa\u011f\u0131 Grubu',color:'#EB0A1E',accent:'#FF3344',textColor:'#FFB3BA',
+   products:[{code:'3000',inch:13},{code:'3300',inch:13},{code:'3302',inch:13},{code:'4000',inch:14},{code:'4100',inch:14},{code:'4102',inch:14},{code:'5806',inch:15},{code:'6900',inch:16}]},
+  {name:'OPEL',sub:'Jant Kapa\u011f\u0131 Grubu',color:'#FF6600',accent:'#FF8833',textColor:'#FFD4A8',
+   products:[{code:'3350',inch:13},{code:'3600',inch:13},{code:'4050',inch:14},{code:'5400',inch:15},{code:'5701',inch:15},{code:'6000',inch:16},{code:'5450',inch:15}]},
+  {name:'K\u0130A',sub:'Jant Kapa\u011f\u0131 Grubu',color:'#BA0C2F',accent:'#E61040',textColor:'#FFAABB',
+   products:[{code:'2711',inch:12},{code:'3711',inch:13},{code:'4711',inch:14},{code:'5711',inch:15}]},
+  {name:'M\u0130TSUB\u0130SH\u0130',sub:'Jant Kapa\u011f\u0131 Grubu',color:'#CC0000',accent:'#FF2222',textColor:'#FFB3B3',
+   products:[{code:'4300',inch:14},{code:'4451',inch:14}]},
+  {name:'VOLKSWAGEN',sub:'Jant Kapa\u011f\u0131 Grubu',color:'#1C2D8C',accent:'#2A4AB5',textColor:'#A0B8F0',
+   products:[{code:'3052',inch:13},{code:'4404',inch:14},{code:'5504',inch:15},{code:'4403',inch:14},{code:'4601',inch:14},{code:'4850',inch:14},{code:'4851',inch:14},{code:'5000',inch:15},{code:'5200',inch:15},{code:'5500',inch:15},{code:'5501',inch:15},{code:'5600',inch:15},{code:'3051',inch:13},{code:'4500',inch:14},{code:'3500',inch:13},{code:'3700',inch:13},{code:'3701',inch:13},{code:'3800',inch:13},{code:'3801',inch:13},{code:'4200',inch:14},{code:'5509',inch:15},{code:'5511',inch:15},{code:'4409',inch:14},{code:'5409',inch:15},{code:'5714',inch:15},{code:'5700',inch:15},{code:'5750',inch:15},{code:'6100',inch:16},{code:'6150',inch:16},{code:'6600',inch:16},{code:'6700',inch:16},{code:'6701',inch:16},{code:'4600',inch:14}]},
+  {name:'FORD',sub:'Jant Kapa\u011f\u0131 Grubu',color:'#00416A',accent:'#0064A0',textColor:'#80C8F0',
+   products:[{code:'4150',inch:14},{code:'4250',inch:14},{code:'4350',inch:14},{code:'5050',inch:15},{code:'5250',inch:15},{code:'5950',inch:15},{code:'6705',inch:16},{code:'4151',inch:14},{code:'6707',inch:16},{code:'6706',inch:16}]},
+  {name:'FIAT',sub:'Jant Kapa\u011f\u0131 Grubu',color:'#8B0000',accent:'#B81010',textColor:'#FFC0C0',
+   products:[{code:'3200',inch:13},{code:'3250',inch:13},{code:'3805',inch:13},{code:'4910',inch:14},{code:'4928',inch:14},{code:'4929',inch:14},{code:'4930',inch:14},{code:'5800',inch:15},{code:'5900',inch:15},{code:'5901',inch:15},{code:'5902',inch:15},{code:'5903',inch:15},{code:'6650',inch:16}]},
+  {name:'HONDA',sub:'Jant Kapa\u011f\u0131 Grubu',color:'#8B001E',accent:'#B82040',textColor:'#FFB0C0',
+   products:[{code:'4920',inch:14},{code:'4921',inch:14}]},
+  {name:'CITRO\u00cbN',sub:'Jant Kapa\u011f\u0131 Grubu',color:'#4A5A6A',accent:'#708090',textColor:'#C8D8E8',
+   products:[{code:'4801',inch:14},{code:'5802',inch:15}]},
+  {name:'S\u0130YAH',sub:'\u00d6zel Siyah Jant Kapaklar\u0131',color:'#111111',accent:'#555',textColor:'#BBB',
+   products:[{code:'5509S',inch:15},{code:'6509S',inch:16},{code:'5509R',inch:15},{code:'6509R',inch:16},{code:'5511S',inch:15},{code:'4500S',inch:14},{code:'5512S',inch:15},{code:'4900S',inch:14},{code:'5900S',inch:15},{code:'5903S',inch:15},{code:'6650R',inch:16},{code:'3019S',inch:13},{code:'4929S',inch:14},{code:'4405S',inch:14},{code:'4929s',inch:14},{code:'4151S',inch:14},{code:'6707S',inch:16},{code:'5902S',inch:15},{code:'5901S',inch:15},{code:'5714S',inch:15},{code:'4409S',inch:14},{code:'4920S',inch:14},{code:'6750S',inch:16},{code:'5507r',inch:15},{code:'5510S',inch:15},{code:'6510S',inch:16},{code:'3052S',inch:13},{code:'4404S',inch:14},{code:'5504S',inch:15},{code:'3052R',inch:13},{code:'4404R',inch:14},{code:'5504R',inch:15},{code:'3111S',inch:13},{code:'4111S',inch:14},{code:'5111S',inch:15},{code:'6111S',inch:16},{code:'3111R',inch:13},{code:'4111R',inch:14},{code:'5111R',inch:15},{code:'6111R',inch:16}]}
+];
+
+let current = 0;
+const total = BRANDS.length;
+
+function render(idx) {
+  const b = BRANDS[idx];
+  const isYellow = b.color === '#EFDF00';
+  const isBlack  = b.color === '#111111';
+  const tc = isYellow ? '#333' : b.textColor;
+  const fc = isYellow ? '#111' : '#fff';
+  const fs = b.name.length > 10 ? '36px' : '56px';
+
+  const cover = document.getElementById('brandCover');
+  cover.style.background = isBlack
+    ? 'linear-gradient(145deg,#111,#1a1a1a)'
+    : `linear-gradient(145deg,${b.color}DD,${b.color}88)`;
+  cover.innerHTML = `
+    <div class="cover-circle" style="width:280px;height:280px;border:30px solid ${b.accent};bottom:-90px;right:-90px"></div>
+    <div class="cover-circle" style="width:140px;height:140px;border:20px solid ${b.accent};top:-40px;left:-40px"></div>
+    <div class="cover-label" style="color:${tc}">JANT KAPAĞI</div>
+    <div class="cover-brand" style="font-size:${fs};color:${fc}">${b.name}</div>
+    <div class="cover-sub" style="color:${tc}">${b.sub.toUpperCase()}</div>
+    <img src=\"data:image/png;base64,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\" style=\"height:38px;width:auto;margin:6px 0\" alt=\"Hanegal\">
+    <div class="cover-count" style="color:${fc};border-color:${tc}66">${b.products.length} ÜRÜN MODELİ</div>
+    <div class="cover-accent" style="background:${b.accent}"></div>
+  `;
+
+  const isUni = b.name === 'UNIVERSAL' || b.name === 'SİYAH';
+  document.getElementById('prodTitle').textContent = b.name + (isUni ? ' GRUBU' : ' UYUMLU');
+  const badge = document.getElementById('prodBadge');
+  badge.textContent = b.name;
+  badge.style.background = isBlack ? '#333' : b.color;
+  badge.style.color = isYellow ? '#111' : '#fff';
+
+  const grid = document.getElementById('prodGrid');
+  grid.innerHTML = '';
+  grid.scrollTop = 0;
+  const cols = b.products.length > 18 ? 4 : 3;
+  // Ekran genişliğine göre hücre boyutu hesapla
+  const isMobile = window.innerWidth <= 700;
+  let cellSize;
+  if (isMobile) {
+    const gridW = window.innerWidth - 16; // 8px padding her taraf
+    cellSize = Math.floor((gridW - 6 * (cols - 1)) / cols);
+  } else {
+    cellSize = cols === 4 ? 125 : 169;
+  }
+  grid.style.gridTemplateColumns = `repeat(${cols}, ${cellSize}px)`;
+  grid.style.gridAutoRows = cellSize + 'px';
+
+  // Kaydedilmiş sıralamayı yükle
+  try {
+    const savedOrder = JSON.parse(localStorage.getItem('order_' + b.name) || 'null');
+    if (savedOrder && savedOrder.length > 0) {
+      b.products.sort((a, b) => {
+        const ia = savedOrder.indexOf(a.code);
+        const ib = savedOrder.indexOf(b.code);
+        return (ia === -1 ? 999 : ia) - (ib === -1 ? 999 : ib);
+      });
+    }
+  } catch(e){}
+
+  // localStorage'dan ekstra ürünleri yükle
+  try {
+    const extraKey = 'extra_prods_' + b.name;
+    const extra = JSON.parse(localStorage.getItem(extraKey) || '[]');
+    extra.forEach(ep => {
+      if (!b.products.find(p => p.code === ep.code)) b.products.push(ep);
+    });
+  } catch(e){}
+
+  b.products.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'prod-card';
+    card.dataset.code = p.code;
+
+    const hint = document.createElement('div');
+    hint.className = 'upload-hint';
+    hint.textContent = 'GÖRSEL EKLE';
+    card.appendChild(hint);
+
+    const img = document.createElement('img');
+    img.alt = p.code;
+    const saved = localStorage.getItem('img_' + b.name + '_' + p.code);
+    img.dataset.editCode = b.name + '_' + p.code;
+    if (saved) {
+      img.src = saved;
+      img.style.visibility = 'visible';
+      hint.style.display = 'none';
+      // Kaydedilmiş transform uygula
+      try {
+        const tr = JSON.parse(localStorage.getItem('transform_' + b.name + '_' + p.code) || 'null');
+        if (tr) { img.style.transform = `translate(${tr.x}px,${tr.y}px) scale(${tr.scale})`; img.style.transformOrigin='center'; }
+      } catch(e){}
+    }
+    card.appendChild(img);
+
+    // Düzenleme butonu (görsel varsa göster)
+    if (saved) {
+      const editBtn = document.createElement('button');
+      editBtn.className = 'edit-trigger';
+      editBtn.title = 'Görseli düzenle';
+      editBtn.innerHTML = '&#9881;';
+      editBtn.addEventListener('click', ev => {
+        ev.stopPropagation();
+        if (!editMode) return;
+        openImgEdit(b.name, p.code, saved);
+      });
+      card.appendChild(editBtn);
+    }
+
+    const lbl = document.createElement('div');
+    lbl.className = 'lbl';
+    // Kaydedilmiş kod varsa onu kullan
+    const savedCode = localStorage.getItem('code_' + b.name + '_' + p.code) || p.code;
+    const savedInch = localStorage.getItem('inch_' + b.name + '_' + p.code) || p.inch;
+    lbl.innerHTML = `<span class="code" title="Düzenlemek için tıkla">${savedCode}</span><span class="inch">${savedInch}"</span>`;
+    card.appendChild(lbl);
+
+    // Koda tıklayınca düzenle
+    lbl.querySelector('.code').addEventListener('click', function(e) {
+      e.stopPropagation();
+      if (!editMode) return;
+      const span = this;
+      const current = span.textContent;
+      const input = document.createElement('input');
+      input.value = current;
+      input.style.cssText = 'width:100%;background:rgba(0,0,0,0.8);color:#fff;border:1px solid #E8C84A;border-radius:2px;font-family:Bebas Neue,sans-serif;font-size:11px;letter-spacing:1px;text-align:right;padding:0 2px;outline:none';
+      span.replaceWith(input);
+      input.focus();
+      input.select();
+      let codeSaved = false;
+      function save() {
+        if(codeSaved) return; codeSaved = true;
+        const val = input.value.trim() || current;
+        const newSpan = document.createElement('span');
+        newSpan.className = 'code';
+        newSpan.title = 'Düzenlemek için tıkla';
+        newSpan.textContent = val;
+        if(input.parentNode) input.replaceWith(newSpan);
+        try { localStorage.setItem('code_' + b.name + '_' + p.code, val); } catch(err){}
+      }
+      input.addEventListener('blur', save);
+      input.addEventListener('keydown', function(e) {
+        if(e.key === 'Enter') { e.preventDefault(); save(); }
+        if(e.key === 'Escape') { input.value = current; save(); }
+      });
+    });
+
+    // İnç'e tıklayınca düzenle
+    lbl.querySelector('.inch').addEventListener('click', function(e) {
+      e.stopPropagation();
+      if (!editMode) return;
+      const span = this;
+      const current = span.textContent.replace('"','').trim();
+      const input = document.createElement('input');
+      input.value = current;
+      input.style.cssText = 'width:100%;background:rgba(0,0,0,0.8);color:#ddd;border:1px solid #E8C84A;border-radius:2px;font-size:7px;letter-spacing:1px;text-align:right;padding:0 2px;outline:none';
+      span.replaceWith(input);
+      input.focus();
+      input.select();
+      let inchSaved = false;
+      function saveInch() {
+        if(inchSaved) return; inchSaved = true;
+        const val = input.value.trim() || current;
+        const newSpan = document.createElement('span');
+        newSpan.className = 'inch';
+        newSpan.title = 'Düzenlemek için tıkla';
+        newSpan.textContent = val + '"';
+        if(input.parentNode) input.replaceWith(newSpan);
+        try { localStorage.setItem('inch_' + b.name + '_' + p.code, val); } catch(err){}
+      }
+      input.addEventListener('blur', saveInch);
+      input.addEventListener('keydown', function(e) {
+        if(e.key === 'Enter') { e.preventDefault(); saveInch(); }
+        if(e.key === 'Escape') { input.value = current; saveInch(); }
+      });
+    });
+
+    card.addEventListener('click', () => {
+      if (!editMode) return;
+      const picker = document.getElementById('imgPicker');
+      picker.onchange = () => {
+        const file = picker.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = e => {
+          img.src = e.target.result;
+          img.style.visibility = 'visible';
+          hint.style.display = 'none';
+          try { localStorage.setItem('img_' + b.name + '_' + p.code, e.target.result); } catch(err) {}
+        };
+        reader.readAsDataURL(file);
+        picker.value = '';
+      };
+      picker.click();
+    });
+
+    // Sürükle-bırak
+    card.draggable = true;
+    card.addEventListener('dragstart', function(e) {
+      if (!editMode) { e.preventDefault(); return; }
+      e.dataTransfer.setData('text/plain', Array.from(grid.children).indexOf(card).toString());
+      card.classList.add('dragging');
+    });
+    card.addEventListener('dragend', function() {
+      card.classList.remove('dragging');
+      document.querySelectorAll('.prod-card').forEach(c => c.classList.remove('drag-over'));
+    });
+    card.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      card.classList.add('drag-over');
+    });
+    card.addEventListener('dragleave', function() {
+      card.classList.remove('drag-over');
+    });
+    card.addEventListener('drop', function(e) {
+      e.preventDefault();
+      card.classList.remove('drag-over');
+      const fromIdx = parseInt(e.dataTransfer.getData('text/plain'));
+      const toIdx = Array.from(grid.children).indexOf(card);
+      if (fromIdx === toIdx || isNaN(fromIdx)) return;
+      // Ürün dizisindeki sırayı değiştir
+      const moved = b.products.splice(fromIdx, 1)[0];
+      b.products.splice(toIdx, 0, moved);
+      // localStorage'a kaydet
+      try { localStorage.setItem('order_' + b.name, JSON.stringify(b.products.map(p => p.code))); } catch(e){}
+      render(current);
+    });
+
+    grid.appendChild(card);
+  });
+
+  // + Yeni ürün kartı
+  const addCard = document.createElement('div');
+  addCard.className = 'add-card';
+  addCard.textContent = '+ YENİ ÜRÜN';
+  addCard.addEventListener('click', () => {
+    if (!editMode) return;
+    openModal(
+      'YENİ ÜRÜN EKLE', 'Ürün kodu', 'İnç (örn: 14)',
+      (code, inch) => {
+        if (!code.trim()) return;
+        const prod = {code: code.trim(), inch: parseInt(inch) || 14};
+        b.products.push(prod);
+        try {
+          const key = 'extra_prods_' + b.name;
+          const existing = JSON.parse(localStorage.getItem(key) || '[]');
+          existing.push(prod);
+          localStorage.setItem(key, JSON.stringify(existing));
+        } catch(e){}
+        render(current);
+      }
+    );
+  });
+  grid.appendChild(addCard);
+
+  document.getElementById('prodTotal').textContent = b.products.length + ' ÜRÜN GÖSTERİLİYOR';
+  document.getElementById('info').textContent = `${b.name} — ${idx+1} / ${total}`;
+  document.getElementById('prevBtn').disabled = idx === 0;
+  document.getElementById('nextBtn').disabled = idx === total - 1;
+  document.getElementById('pb').style.width = ((idx/(total-1))*100) + '%';
+  document.querySelectorAll('.dot').forEach((d,i) => {
+    d.classList.toggle('active', i === idx);
+    if(i !== idx) d.style.background = '#222';
+  });
+}
+
+function go(dir) {
+  const ov = document.getElementById('overlay');
+  ov.classList.add('on');
+  setTimeout(() => {
+    current = Math.max(0, Math.min(total-1, current+dir));
+    render(current);
+    ov.classList.remove('on');
+  }, 160);
+}
+
+const dotsEl = document.getElementById('dots');
+BRANDS.forEach((b,i) => {
+  const d = document.createElement('div');
+  d.className = 'dot';
+  d.title = b.name;
+  d.onclick = () => { current = i; render(current); };
+  dotsEl.appendChild(d);
+});
+
+// + Yeni sayfa butonu
+const addPageBtn = document.createElement('button');
+addPageBtn.className = 'add-page-btn';
+addPageBtn.title = 'Yeni marka sayfası ekle';
+addPageBtn.textContent = '+';
+addPageBtn.addEventListener('click', () => {
+  if (!editMode) return;
+  openModal(
+    'YENİ MARKA SAYFASI', 'Marka adı (örn: SKODA)', 'Renk kodu (örn: #CC0000)',
+    (name, color) => {
+      if (!name.trim()) return;
+      color = color.trim() || '#444444';
+  const newBrand = {
+    name: name.trim().toUpperCase(),
+    sub: 'Jant Kapa\u011f\u0131 Grubu',
+    color: color,
+    accent: color,
+    textColor: '#ffffff',
+    products: []
+  };
+  BRANDS.push(newBrand);
+  // Dot ekle
+  const d = document.createElement('div');
+  d.className = 'dot';
+  d.title = newBrand.name;
+  const newIdx = BRANDS.length - 1;
+  d.onclick = () => { current = newIdx; render(current); };
+  dotsEl.insertBefore(d, addPageBtn);
+  // localStorage'a kaydet
+  try {
+    const saved = JSON.parse(localStorage.getItem('extra_brands') || '[]');
+    saved.push(newBrand);
+    localStorage.setItem('extra_brands', JSON.stringify(saved));
+  } catch(e){}
+      current = BRANDS.length - 1;
+      render(current);
+    }
+  );
+});
+document.querySelector('.nav').appendChild(addPageBtn);
+
+// Sayfa yüklendiğinde kayıtlı markaları yükle
+try {
+  const savedBrands = JSON.parse(localStorage.getItem('extra_brands') || '[]');
+  savedBrands.forEach(b => {
+    BRANDS.push(b);
+    const d = document.createElement('div');
+    d.className = 'dot';
+    d.title = b.name;
+    const idx = BRANDS.length - 1;
+    d.onclick = () => { current = idx; render(current); };
+    dotsEl.insertBefore(d, addPageBtn);
+  });
+} catch(e){}
+
+document.addEventListener('keydown', e => {
+  if(e.key==='ArrowRight'||e.key==='ArrowDown') go(1);
+  if(e.key==='ArrowLeft'||e.key==='ArrowUp') go(-1);
+});
+
+// ============ DÜZENLEME MODU ============
+let editMode = false;
+
+function setEditMode(active) {
+  editMode = active;
+  if (active) {
+    document.body.classList.remove('view-mode');
+    document.body.classList.add('edit-mode');
+  } else {
+    document.body.classList.add('view-mode');
+    document.body.classList.remove('edit-mode');
+  }
+  try { localStorage.setItem('editMode', active ? '1' : '0'); } catch(e) {}
+}
+
+// Başlangıçta view-mode (render öncesi sadece class ekle)
+document.body.classList.add('view-mode');
+
+// Ctrl+Shift+A ile düzenleme aç/kapat
+document.addEventListener('keydown', function(e) {
+  if (e.ctrlKey && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+    e.preventDefault();
+    setEditMode(!editMode);
+    render(current);
+    if (typeof mobRender === 'function') mobRender(mobCurrent);
+    if (editMode) {
+      const badge = document.querySelector('.edit-mode-badge');
+      if (badge) { badge.style.opacity='1'; setTimeout(() => badge.style.opacity='', 2000); }
+    }
+  }
+});
+
+// Ekran boyutu değişince yeniden render
+let resizeTimer;
+window.addEventListener('resize', function() {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => render(current), 200);
+});
+
+let tx = 0;
+document.addEventListener('touchstart', e => tx = e.touches[0].clientX);
+document.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - tx;
+  if(dx < -40) go(1);
+  if(dx > 40) go(-1);
+});
+
+render(0);
+
+// ============ MOBİL ============
+function isMobileDevice() { return window.innerWidth <= 700; }
+
+function mobRender(idx) {
+  const b = BRANDS[idx];
+  const isYellow = b.color === '#EFDF00';
+  const isBlack = b.color === '#111111';
+
+  // Header
+  document.getElementById('mobCounter').textContent = (idx+1) + ' / ' + BRANDS.length;
+
+  // Kapak
+  const cover = document.getElementById('mobCover');
+  cover.style.background = isBlack
+    ? 'linear-gradient(135deg,#111,#1a1a1a)'
+    : `linear-gradient(135deg,${b.color}EE,${b.color}88)`;
+  document.getElementById('mobCoverTitle').textContent = b.name;
+  document.getElementById('mobCoverTitle').style.color = isYellow ? '#111' : '#fff';
+  document.getElementById('mobCoverSub').textContent = b.sub;
+  document.getElementById('mobCoverSub').style.color = isYellow ? '#333' : 'rgba(255,255,255,0.6)';
+  document.getElementById('mobCoverCount').textContent = b.products.length + ' ÜRÜN';
+  document.getElementById('mobCoverCount').style.color = isYellow ? '#333' : 'rgba(255,255,255,0.7)';
+  document.getElementById('mobCoverDeco').style.borderColor = b.accent;
+
+  // Logo
+  const logoEl = document.getElementById('mobLogoTop');
+  logoEl.src = 'data:image/png;base64,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';
+  
+  // Grid
+  const grid = document.getElementById('mobGrid');
+  grid.innerHTML = '';
+  document.getElementById('mobGridWrap').scrollTop = 0;
+
+  // Ekstra ürünleri yükle
+  try {
+    const extra = JSON.parse(localStorage.getItem('extra_prods_' + b.name) || '[]');
+    extra.forEach(ep => { if (!b.products.find(p => p.code === ep.code)) b.products.push(ep); });
+  } catch(e){}
+
+  b.products.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'mob-card';
+
+    const img = document.createElement('img');
+    img.alt = p.code;
+    const saved = localStorage.getItem('img_' + b.name + '_' + p.code);
+    if (saved) { img.src = saved; img.style.visibility = 'visible'; }
+    card.appendChild(img);
+
+    const lbl = document.createElement('div');
+    lbl.className = 'mob-lbl';
+    const savedCode = localStorage.getItem('code_' + b.name + '_' + p.code) || p.code;
+    const savedInch = localStorage.getItem('inch_' + b.name + '_' + p.code) || p.inch;
+    lbl.innerHTML = `<span class="mob-code">${savedCode}</span><span class="mob-inch">${savedInch}"</span>`;
+    card.appendChild(lbl);
+
+    if (!saved) {
+      const hint = document.createElement('div');
+      hint.className = 'mob-add-hint';
+      hint.textContent = 'DOKUNUN';
+      card.appendChild(hint);
+    }
+
+    card.addEventListener('click', () => {
+      if (!editMode) return;
+      const picker = document.getElementById('imgPicker');
+      picker.onchange = () => {
+        const file = picker.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = e => {
+          img.src = e.target.result;
+          img.style.visibility = 'visible';
+          const hint = card.querySelector('.mob-add-hint');
+          if (hint) hint.remove();
+          try { localStorage.setItem('img_' + b.name + '_' + p.code, e.target.result); } catch(er){}
+        };
+        reader.readAsDataURL(file);
+        picker.value = '';
+      };
+      picker.click();
+    });
+
+    grid.appendChild(card);
+  });
+
+  // + Yeni ürün
+  const addCard = document.createElement('div');
+  addCard.className = 'mob-add-card';
+  addCard.textContent = '+ YENİ';
+  addCard.addEventListener('click', () => {
+    if (!editMode) return;
+    openModal('YENİ ÜRÜN EKLE','Ürün kodu','İnç (örn: 14)', (code, inch) => {
+      if (!code.trim()) return;
+      const prod = {code:code.trim(), inch:parseInt(inch)||14};
+      b.products.push(prod);
+      try {
+        const key = 'extra_prods_' + b.name;
+        const ex = JSON.parse(localStorage.getItem(key)||'[]');
+        ex.push(prod);
+        localStorage.setItem(key, JSON.stringify(ex));
+      } catch(e){}
+      mobRender(mobCurrent);
+    });
+  });
+  grid.appendChild(addCard);
+
+  // Dots
+  document.querySelectorAll('.mob-dot').forEach((d,i) => {
+    d.classList.toggle('active', i === idx);
+    if (i === idx) {
+      d.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+    }
+  });
+
+  document.getElementById('mobPrev').disabled = idx === 0;
+  document.getElementById('mobNext').disabled = idx === BRANDS.length - 1;
+}
+
+let mobCurrent = 0;
+
+function mobGo(dir) {
+  mobCurrent = Math.max(0, Math.min(BRANDS.length-1, mobCurrent+dir));
+  mobRender(mobCurrent);
+}
+
+// Swipe
+let mobTx = 0, mobTy = 0;
+const mobileView = document.getElementById('mobileView');
+mobileView.addEventListener('touchstart', e => {
+  mobTx = e.touches[0].clientX;
+  mobTy = e.touches[0].clientY;
+}, {passive:true});
+mobileView.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - mobTx;
+  const dy = e.changedTouches[0].clientY - mobTy;
+  if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+    if (dx < 0) mobGo(1);
+    else mobGo(-1);
+  }
+}, {passive:true});
+
+// Mobil dots oluştur
+const mobDotsEl = document.getElementById('mobDots');
+BRANDS.forEach((b,i) => {
+  const d = document.createElement('div');
+  d.className = 'mob-dot';
+  d.title = b.name;
+  d.onclick = () => { mobCurrent = i; mobRender(mobCurrent); };
+  mobDotsEl.appendChild(d);
+});
+
+// Mobil/masaüstü toggle
+function checkLayout() {
+  const mobile = window.innerWidth <= 700;
+  document.getElementById('mobileView').style.display = mobile ? 'flex' : 'none';
+  if (mobile) mobRender(mobCurrent);
+}
+window.addEventListener('resize', checkLayout);
+checkLayout();
+
+// ============ GÖRSEL DÜZENLEME ============
+let imgEditState = {scale:1, x:0, y:0, code:'', brandName:''};
+let imgEditDrag = {active:false, startX:0, startY:0, startTx:0, startTy:0};
+let imgEditPinch = {active:false, startDist:0, startScale:1};
+
+function openImgEdit(brandName, code, imgSrc) {
+  imgEditState = {
+    scale: 1, x: 0, y: 0,
+    code: code, brandName: brandName
+  };
+  // Kaydedilmiş transform varsa yükle
+  try {
+    const saved = JSON.parse(localStorage.getItem('transform_' + brandName + '_' + code) || 'null');
+    if (saved) { imgEditState.scale = saved.scale; imgEditState.x = saved.x; imgEditState.y = saved.y; }
+  } catch(e){}
+
+  const img = document.getElementById('imgEditImg');
+  img.src = imgSrc;
+  document.getElementById('zoomSlider').value = imgEditState.scale;
+  applyImgEditTransform();
+  document.getElementById('imgEditBg').classList.add('open');
+}
+
+function closeImgEdit() {
+  document.getElementById('imgEditBg').classList.remove('open');
+}
+
+function applyImgEditTransform() {
+  const img = document.getElementById('imgEditImg');
+  img.style.transform = `translate(${imgEditState.x}px, ${imgEditState.y}px) scale(${imgEditState.scale})`;
+  document.getElementById('zoomSlider').value = imgEditState.scale;
+}
+
+function imgEditZoom(delta) {
+  imgEditState.scale = Math.min(3, Math.max(0.5, imgEditState.scale + delta));
+  applyImgEditTransform();
+}
+
+function resetImgEdit() {
+  imgEditState.scale = 1; imgEditState.x = 0; imgEditState.y = 0;
+  applyImgEditTransform();
+}
+
+function saveImgEdit() {
+  try {
+    localStorage.setItem('transform_' + imgEditState.brandName + '_' + imgEditState.code,
+      JSON.stringify({scale:imgEditState.scale, x:imgEditState.x, y:imgEditState.y}));
+  } catch(e){}
+  // Tüm ilgili img elementlerine uygula
+  document.querySelectorAll('[data-edit-code="' + imgEditState.brandName + '_' + imgEditState.code + '"]').forEach(img => {
+    img.style.transform = `translate(${imgEditState.x}px, ${imgEditState.y}px) scale(${imgEditState.scale})`;
+    img.style.transformOrigin = 'center';
+  });
+  closeImgEdit();
+}
+
+// Zoom slider
+document.getElementById('zoomSlider').addEventListener('input', function() {
+  imgEditState.scale = parseFloat(this.value);
+  applyImgEditTransform();
+});
+
+// Mouse sürükle
+const frame = document.getElementById('imgEditFrame');
+frame.addEventListener('mousedown', e => {
+  imgEditDrag = {active:true, startX:e.clientX, startY:e.clientY, startTx:imgEditState.x, startTy:imgEditState.y};
+  e.preventDefault();
+});
+window.addEventListener('mousemove', e => {
+  if (!imgEditDrag.active) return;
+  imgEditState.x = imgEditDrag.startTx + (e.clientX - imgEditDrag.startX);
+  imgEditState.y = imgEditDrag.startTy + (e.clientY - imgEditDrag.startY);
+  applyImgEditTransform();
+});
+window.addEventListener('mouseup', () => imgEditDrag.active = false);
+
+// Mouse scroll zoom
+frame.addEventListener('wheel', e => {
+  e.preventDefault();
+  imgEditState.scale = Math.min(3, Math.max(0.5, imgEditState.scale - e.deltaY * 0.001));
+  applyImgEditTransform();
+}, {passive:false});
+
+// Touch sürükle & pinch
+frame.addEventListener('touchstart', e => {
+  if (e.touches.length === 1) {
+    imgEditDrag = {active:true, startX:e.touches[0].clientX, startY:e.touches[0].clientY, startTx:imgEditState.x, startTy:imgEditState.y};
+    imgEditPinch.active = false;
+  } else if (e.touches.length === 2) {
+    imgEditDrag.active = false;
+    const dx = e.touches[0].clientX - e.touches[1].clientX;
+    const dy = e.touches[0].clientY - e.touches[1].clientY;
+    imgEditPinch = {active:true, startDist:Math.hypot(dx,dy), startScale:imgEditState.scale};
+  }
+  e.preventDefault();
+}, {passive:false});
+
+frame.addEventListener('touchmove', e => {
+  if (e.touches.length === 1 && imgEditDrag.active) {
+    imgEditState.x = imgEditDrag.startTx + (e.touches[0].clientX - imgEditDrag.startX);
+    imgEditState.y = imgEditDrag.startTy + (e.touches[0].clientY - imgEditDrag.startY);
+    applyImgEditTransform();
+  } else if (e.touches.length === 2 && imgEditPinch.active) {
+    const dx = e.touches[0].clientX - e.touches[1].clientX;
+    const dy = e.touches[0].clientY - e.touches[1].clientY;
+    const dist = Math.hypot(dx, dy);
+    imgEditState.scale = Math.min(3, Math.max(0.5, imgEditPinch.startScale * (dist / imgEditPinch.startDist)));
+    applyImgEditTransform();
+  }
+  e.preventDefault();
+}, {passive:false});
+
+frame.addEventListener('touchend', () => { imgEditDrag.active = false; imgEditPinch.active = false; });
+
+</script>
+</body>
+</html>
