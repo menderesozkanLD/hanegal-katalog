@@ -506,153 +506,34 @@ function render(idx) {
 
     const img = document.createElement('img');
     img.alt = p.code;
-    const saved = localStorage.getItem('img_' + b.name + '_' + p.code);
     img.dataset.editCode = b.name + '_' + p.code;
-    if (saved) {
-      img.src = saved;
-      img.style.visibility = 'visible';
-      hint.style.display = 'none';
-      // Kaydedilmiş transform uygula
-      try {
-        const tr = JSON.parse(localStorage.getItem('transform_' + b.name + '_' + p.code) || 'null');
-        if (tr) { img.style.transform = `translate(${tr.x}px,${tr.y}px) scale(${tr.scale})`; img.style.transformOrigin='center'; }
-      } catch(e){}
-    }
     card.appendChild(img);
-
-    // Düzenleme butonu (görsel varsa göster)
-    if (saved) {
-      const editBtn = document.createElement('button');
-      editBtn.className = 'edit-trigger';
-      editBtn.title = 'Görseli düzenle';
-      editBtn.innerHTML = '&#9881;';
-      editBtn.addEventListener('click', ev => {
-        ev.stopPropagation();
-        if (!editMode) return;
-        openImgEdit(b.name, p.code, saved);
-      });
-      card.appendChild(editBtn);
-    }
-
-    const lbl = document.createElement('div');
-    lbl.className = 'lbl';
-    // Kaydedilmiş kod varsa onu kullan
-    const savedCode = localStorage.getItem('code_' + b.name + '_' + p.code) || p.code;
-    const savedInch = localStorage.getItem('inch_' + b.name + '_' + p.code) || p.inch;
-    lbl.innerHTML = `<span class="code" title="Düzenlemek için tıkla">${savedCode}</span><span class="inch">${savedInch}"</span>`;
-    card.appendChild(lbl);
-
-    // Koda tıklayınca düzenle
-    lbl.querySelector('.code').addEventListener('click', function(e) {
-      e.stopPropagation();
-      if (!editMode) return;
-      const span = this;
-      const current = span.textContent;
-      const input = document.createElement('input');
-      input.value = current;
-      input.style.cssText = 'width:100%;background:rgba(0,0,0,0.8);color:#fff;border:1px solid #E8C84A;border-radius:2px;font-family:Bebas Neue,sans-serif;font-size:11px;letter-spacing:1px;text-align:right;padding:0 2px;outline:none';
-      span.replaceWith(input);
-      input.focus();
-      input.select();
-      let codeSaved = false;
-      function save() {
-        if(codeSaved) return; codeSaved = true;
-        const val = input.value.trim() || current;
-        const newSpan = document.createElement('span');
-        newSpan.className = 'code';
-        newSpan.title = 'Düzenlemek için tıkla';
-        newSpan.textContent = val;
-        if(input.parentNode) input.replaceWith(newSpan);
-        try { localStorage.setItem('code_' + b.name + '_' + p.code, val); } catch(err){}
-      }
-      input.addEventListener('blur', save);
-      input.addEventListener('keydown', function(e) {
-        if(e.key === 'Enter') { e.preventDefault(); save(); }
-        if(e.key === 'Escape') { input.value = current; save(); }
-      });
-    });
-
-    // İnç'e tıklayınca düzenle
-    lbl.querySelector('.inch').addEventListener('click', function(e) {
-      e.stopPropagation();
-      if (!editMode) return;
-      const span = this;
-      const current = span.textContent.replace('"','').trim();
-      const input = document.createElement('input');
-      input.value = current;
-      input.style.cssText = 'width:100%;background:rgba(0,0,0,0.8);color:#ddd;border:1px solid #E8C84A;border-radius:2px;font-size:7px;letter-spacing:1px;text-align:right;padding:0 2px;outline:none';
-      span.replaceWith(input);
-      input.focus();
-      input.select();
-      let inchSaved = false;
-      function saveInch() {
-        if(inchSaved) return; inchSaved = true;
-        const val = input.value.trim() || current;
-        const newSpan = document.createElement('span');
-        newSpan.className = 'inch';
-        newSpan.title = 'Düzenlemek için tıkla';
-        newSpan.textContent = val + '"';
-        if(input.parentNode) input.replaceWith(newSpan);
-        try { localStorage.setItem('inch_' + b.name + '_' + p.code, val); } catch(err){}
-      }
-      input.addEventListener('blur', saveInch);
-      input.addEventListener('keydown', function(e) {
-        if(e.key === 'Enter') { e.preventDefault(); saveInch(); }
-        if(e.key === 'Escape') { input.value = current; saveInch(); }
-      });
-    });
-
-    card.addEventListener('click', () => {
-      if (!editMode) return;
-      const picker = document.getElementById('imgPicker');
-      picker.onchange = () => {
-        const file = picker.files[0];
-        if (!file) return;
-        const reader = new FileReader();
-        reader.onload = e => {
-          img.src = e.target.result;
-          img.style.visibility = 'visible';
-          hint.style.display = 'none';
-          try { localStorage.setItem('img_' + b.name + '_' + p.code, e.target.result); } catch(err) {}
-        };
-        reader.readAsDataURL(file);
-        picker.value = '';
-      };
-      picker.click();
-    });
-
-    // Sürükle-bırak
-    card.draggable = true;
-    card.addEventListener('dragstart', function(e) {
-      if (!editMode) { e.preventDefault(); return; }
-      e.dataTransfer.setData('text/plain', Array.from(grid.children).indexOf(card).toString());
-      card.classList.add('dragging');
-    });
-    card.addEventListener('dragend', function() {
-      card.classList.remove('dragging');
-      document.querySelectorAll('.prod-card').forEach(c => c.classList.remove('drag-over'));
-    });
-    card.addEventListener('dragover', function(e) {
-      e.preventDefault();
-      card.classList.add('drag-over');
-    });
-    card.addEventListener('dragleave', function() {
-      card.classList.remove('drag-over');
-    });
-    card.addEventListener('drop', function(e) {
-      e.preventDefault();
-      card.classList.remove('drag-over');
-      const fromIdx = parseInt(e.dataTransfer.getData('text/plain'));
-      const toIdx = Array.from(grid.children).indexOf(card);
-      if (fromIdx === toIdx || isNaN(fromIdx)) return;
-      // Ürün dizisindeki sırayı değiştir
-      const moved = b.products.splice(fromIdx, 1)[0];
-      b.products.splice(toIdx, 0, moved);
-      // localStorage'a kaydet
-      try { localStorage.setItem('order_' + b.name, JSON.stringify(b.products.map(p => p.code))); } catch(e){}
-      render(current);
-    });
-
+    
+    // IndexedDB'den gorsel yukle
+    (function(cardEl, imgEl, hintEl, bName, pCode) {
+      loadImage(bName, pCode).then(function(saved) {
+        if (!saved) return;
+        imgEl.src = saved;
+        imgEl.style.visibility = 'visible';
+        if (hintEl) hintEl.style.display = 'none';
+        loadTransform(bName, pCode).then(function(tr) {
+          if (tr) { imgEl.style.transform = 'translate('+tr.x+'px,'+tr.y+'px) scale('+tr.scale+')'; imgEl.style.transformOrigin='center'; }
+        }).catch(function(){});
+        if (editMode) {
+          const editBtn = document.createElement('button');
+          editBtn.className = 'edit-trigger';
+          editBtn.title = 'Gorseli duzenle';
+          editBtn.innerHTML = '&#9881;';
+          editBtn.addEventListener('click', function(ev) {
+            ev.stopPropagation();
+            if (!editMode) return;
+            openImgEdit(bName, pCode, saved);
+          });
+          cardEl.appendChild(editBtn);
+        }
+      }).catch(function(){});
+    })(card, img, hint, b.name, p.code);
+    
     grid.appendChild(card);
   });
 
@@ -864,9 +745,16 @@ function mobRender(idx) {
 
     const img = document.createElement('img');
     img.alt = p.code;
-    const saved = localStorage.getItem('img_' + b.name + '_' + p.code);
-    if (saved) { img.src = saved; img.style.visibility = 'visible'; }
     card.appendChild(img);
+    (function(cardEl, imgEl, bName, pCode) {
+      loadImage(bName, pCode).then(function(saved) {
+        if (!saved) return;
+        imgEl.src = saved;
+        imgEl.style.visibility = 'visible';
+        const h = cardEl.querySelector('.mob-add-hint');
+        if (h) h.remove();
+      }).catch(function(){});
+    })(card, img, b.name, p.code);
 
     const lbl = document.createElement('div');
     lbl.className = 'mob-lbl';
@@ -875,12 +763,10 @@ function mobRender(idx) {
     lbl.innerHTML = `<span class="mob-code">${savedCode}</span><span class="mob-inch">${savedInch}"</span>`;
     card.appendChild(lbl);
 
-    if (!saved) {
-      const hint = document.createElement('div');
-      hint.className = 'mob-add-hint';
-      hint.textContent = 'DOKUNUN';
-      card.appendChild(hint);
-    }
+    const hint = document.createElement('div');
+    hint.className = 'mob-add-hint';
+    hint.textContent = 'DOKUNUN';
+    card.appendChild(hint);
 
     card.addEventListener('click', () => {
       if (!editMode) return;
@@ -890,11 +776,12 @@ function mobRender(idx) {
         if (!file) return;
         const reader = new FileReader();
         reader.onload = e => {
-          img.src = e.target.result;
-          img.style.visibility = 'visible';
-          const hint = card.querySelector('.mob-add-hint');
-          if (hint) hint.remove();
-          try { localStorage.setItem('img_' + b.name + '_' + p.code, e.target.result); } catch(er){}
+          compressImage(e.target.result, 600, 0.82, function(compressed) {
+            img.src = compressed;
+            img.style.visibility = 'visible';
+            const hint = card.querySelector('.mob-add-hint');
+            if (hint) hint.remove();
+            saveImage(b.name, p.code, compressed).catch(() => {});
         };
         reader.readAsDataURL(file);
         picker.value = '';
@@ -936,6 +823,8 @@ function mobRender(idx) {
 
   document.getElementById('mobPrev').disabled = idx === 0;
   document.getElementById('mobNext').disabled = idx === BRANDS.length - 1;
+}
+
 }
 
 let mobCurrent = 0;
